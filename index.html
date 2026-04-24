@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Коммерческое предложение — Таргетированная реклама</title>
+
   <style>
     :root {
       --bg: #0b1020;
@@ -18,8 +20,14 @@
       --radius: 24px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
@@ -31,15 +39,24 @@
       line-height: 1.55;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .section { padding: 72px 0; }
+    .section {
+      padding: 72px 0;
+    }
 
     .badge {
       display: inline-flex;
@@ -69,8 +86,8 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
-      gap: 28px;
-      align-items: center;
+      gap: 34px;
+      align-items: start;
     }
 
     .hero-copy h1 {
@@ -105,7 +122,9 @@
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
     }
 
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-primary {
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -134,16 +153,22 @@
       font-size: 14px;
     }
 
-    .hero-visual {
-      position: relative;
-    }
-
     .glass {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: var(--shadow);
       border-radius: var(--radius);
       backdrop-filter: blur(18px);
+    }
+
+    /* ИЗМЕНЕНО: фотографии вынесены в правый верхний блок */
+    .hero-visual {
+      position: relative;
+      align-self: start;
+      justify-self: end;
+      width: 100%;
+      max-width: 500px;
+      margin-top: 10px;
     }
 
     .photo-card {
@@ -153,24 +178,26 @@
 
     .photo-card img {
       width: 100%;
-      height: 560px;
+      height: 520px;
       object-fit: cover;
+      object-position: center top;
       border-radius: 18px;
     }
 
     .mini-card {
       position: absolute;
-      right: -10px;
-      bottom: -24px;
-      width: min(330px, 82%);
+      right: -18px;
+      bottom: -28px;
+      width: min(320px, 82%);
       padding: 14px;
     }
 
     .mini-card img {
       border-radius: 16px;
       width: 100%;
-      height: 220px;
+      height: 210px;
       object-fit: cover;
+      object-position: center;
       margin-bottom: 12px;
     }
 
@@ -185,11 +212,12 @@
       font-size: 14px;
     }
 
+    /* ИЗМЕНЕНО: статистика теперь отдельным блоком под hero */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 18px;
+      margin-top: 54px;
     }
 
     .stat-card {
@@ -234,11 +262,25 @@
       gap: 18px;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-    .process-grid { grid-template-columns: repeat(4, 1fr); }
-    .cases-grid { grid-template-columns: repeat(3, 1fr); }
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cases-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     .card {
       padding: 26px;
@@ -359,7 +401,9 @@
       font-size: 20px;
     }
 
-    .case-card h3 { margin-top: 0; }
+    .case-card h3 {
+      margin-top: 0;
+    }
 
     .case-result {
       margin-top: 18px;
@@ -371,7 +415,10 @@
       font-weight: 600;
     }
 
-    .faq-item + .faq-item { margin-top: 14px; }
+    .faq-item + .faq-item {
+      margin-top: 14px;
+    }
+
     .faq-item summary {
       cursor: pointer;
       list-style: none;
@@ -381,7 +428,11 @@
       background: rgba(255,255,255,0.05);
       border: 1px solid var(--line);
     }
-    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
     .faq-item p {
       margin: 0;
       padding: 14px 22px 0;
@@ -462,6 +513,14 @@
       .grid-2 {
         grid-template-columns: 1fr 1fr;
       }
+
+      .hero-visual {
+        max-width: 460px;
+      }
+
+      .photo-card img {
+        height: 480px;
+      }
     }
 
     @media (max-width: 860px) {
@@ -475,6 +534,12 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-visual {
+        justify-self: stretch;
+        max-width: 100%;
+        margin-top: 24px;
+      }
+
       .mini-card {
         position: relative;
         right: auto;
@@ -483,39 +548,43 @@
         margin-top: 16px;
       }
 
-      .photo-card img { height: auto; }
-      .section { padding: 56px 0; }
-      .hero { padding-top: 26px; }
+      .photo-card img {
+        height: auto;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="hero">
     <div class="container hero-grid">
+
       <div class="hero-copy">
         <div class="badge">Коммерческое предложение • таргетированная реклама для офлайн-бизнеса</div>
+
         <h1>
           Приведу <span class="gradient-text">заявки и клиентов</span><br />
           из соцсетей в ваш бизнес
         </h1>
+
         <p>
           Помогаю салонам красоты, фитнес-клубам, студиям, школам и локальным проектам получать
           предсказуемый поток обращений через таргетированную рекламу. Работаю с аналитикой,
           офферами, креативами и воронкой, а не только с запуском объявлений.
         </p>
-<div class="hero-visual">
-  <div class="photo-card glass">
-    <img src="photo-main.jpg" alt="Олеся — таргетолог" />
-  </div>
 
-  <div class="mini-card glass">
-    <img src="certs.jpg" alt="Сертификаты Олеси Тарасовой" />
-    <strong>Подтверждённая квалификация</strong>
-    <span>
-      Сертификаты по таргетированной рекламе, Яндекс.Бизнесу и профессиональной подготовке.
-    </span>
-  </div>
-</div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#pricing">Получить расчёт стоимости</a>
           <a class="btn btn-secondary" href="#contact">Обсудить проект</a>
@@ -528,19 +597,39 @@
           <div class="chip">Подходит для локального бизнеса</div>
         </div>
       </div>
-        <div class="container stats">
+
+      <div class="hero-visual">
+        <div class="photo-card glass">
+          <img src="photo-main.jpg" alt="Олеся — таргетолог" />
+        </div>
+
+        <div class="mini-card glass">
+          <img src="certs.jpg" alt="Сертификаты Олеси Тарасовой" />
+          <strong>Подтверждённая квалификация</strong>
+          <span>
+            Сертификаты по таргетированной рекламе, Яндекс.Бизнесу и профессиональной подготовке.
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container stats">
       <div class="stat-card glass">
         <strong>30 000 ₽+</strong>
         <span>бюджет, с которого можно строить рабочую систему тестов</span>
       </div>
+
       <div class="stat-card glass">
         <strong>1–3 недели</strong>
         <span>на первичную аналитику, тест гипотез и поиск рабочей связки</span>
       </div>
+
       <div class="stat-card glass">
         <strong>4 блока</strong>
         <span>в работе: стратегия, реклама, посадочная, обработка заявок</span>
       </div>
+
       <div class="stat-card glass">
         <strong>до 30 дней</strong>
         <span>ориентир на быстрый возврат рекламы в нишах с коротким циклом сделки</span>
@@ -571,6 +660,7 @@
               <li>барбершопы</li>
             </ul>
           </article>
+
           <article class="card">
             <div class="accent-line"></div>
             <h3>Спорт и развитие</h3>
@@ -581,6 +671,7 @@
               <li>детские секции</li>
             </ul>
           </article>
+
           <article class="card">
             <div class="accent-line"></div>
             <h3>Образование</h3>
@@ -616,6 +707,7 @@
               <li>прогноз по бюджету, лидам и тестам</li>
             </ul>
           </article>
+
           <article class="card">
             <h3>Подготовка рекламной системы</h3>
             <ul>
@@ -625,6 +717,7 @@
               <li>настройка аналитики и базовых метрик</li>
             </ul>
           </article>
+
           <article class="card">
             <h3>Запуск и оптимизация</h3>
             <ul>
@@ -634,6 +727,7 @@
               <li>регулярная отчётность по понятным метрикам</li>
             </ul>
           </article>
+
           <article class="card">
             <h3>Усиление конверсии</h3>
             <ul>
@@ -663,16 +757,19 @@
             <h3>Бриф и аудит</h3>
             <p>Разбираю ваш продукт, экономику, текущий маркетинг, географию и реальные цели по заявкам.</p>
           </article>
+
           <article class="process-step card">
             <div class="num">02</div>
             <h3>Офферы и гипотезы</h3>
             <p>Собираю сильные предложения под вашу аудиторию и формирую тестовый пул связок.</p>
           </article>
+
           <article class="process-step card">
             <div class="num">03</div>
             <h3>Запуск рекламы</h3>
             <p>Настраиваю кампании, объявления, формы, метки и запускаю тестирование на реальных данных.</p>
           </article>
+
           <article class="process-step card">
             <div class="num">04</div>
             <h3>Оптимизация</h3>
@@ -753,11 +850,13 @@
             <p>Реклама оценивается не по красивым кликам, а по заявкам, записям и продажам.</p>
             <div class="case-result">Фокус: окупаемость и качество обращений</div>
           </article>
+
           <article class="case-card card">
             <h3>Подтверждённое обучение</h3>
             <p>Сертификаты и профильная подготовка усиливают экспертность в переговорах с клиентом.</p>
             <div class="case-result">Фокус: доверие на этапе продажи услуг</div>
           </article>
+
           <article class="case-card card">
             <h3>Подход через аналитику</h3>
             <p>Выстраиваю рекламу от цифр бизнеса: средний чек, конверсия, цикл сделки, точка окупаемости.</p>
@@ -778,14 +877,17 @@
           <summary>Рекламный бюджет входит в стоимость?</summary>
           <p>Нет, обычно отдельно оплачивается работа специалиста и отдельно сам рекламный бюджет площадки.</p>
         </details>
+
         <details class="faq-item">
           <summary>Когда ждать первые заявки?</summary>
           <p>Первые обращения могут прийти уже в первые дни после запуска, но для объективных выводов нужен период тестов и оптимизации.</p>
         </details>
+
         <details class="faq-item">
           <summary>Можно ли работать без сайта?</summary>
           <p>Да. В зависимости от ниши можно использовать лид-формы, сообщения, квизы, чат-боты или простую посадочную страницу.</p>
         </details>
+
         <details class="faq-item">
           <summary>Подходит ли это для локального бизнеса в городе?</summary>
           <p>Да, особенно если у бизнеса понятный оффер, конкурентный продукт и есть готовность быстро обрабатывать заявки.</p>
@@ -797,18 +899,22 @@
       <div class="container">
         <div class="cta glass">
           <div class="badge">Связаться</div>
+
           <h2>Готова обсудить ваш проект и собрать стратегию запуска</h2>
+
           <p>
             Напишите, какой у вас бизнес, город, средний чек и планируемый бюджет на рекламу —
             подготовлю рекомендации по старту, связкам и ожидаемой модели привлечения заявок.
           </p>
+
           <div class="contact-box">
             <div class="contact-pill">Telegram: @olesya_target_VK</div>
-            <div class="contact-pill">ВК https://vk.com/olesya_target_vk</div>
+            <div class="contact-pill">ВК: https://vk.com/olesya_target_vk</div>
             <div class="contact-pill">Email: tarolesya26@yandex.ru</div>
           </div>
+
           <div style="margin-top:24px; position:relative; z-index:1;">
-            <a class="btn btn-primary" href="mailto:yourmail@example.com">Отправить заявку</a>
+            <a class="btn btn-primary" href="mailto:tarolesya26@yandex.ru">Отправить заявку</a>
           </div>
         </div>
       </div>
@@ -817,8 +923,12 @@
 
   <footer>
     <div class="container">
-      <div>© Коммерческое предложение по таргетированной рекламе. Замените контакты, фото, цены и кейсы на свои актуальные данные.</div>
+      <div>
+        © Коммерческое предложение по таргетированной рекламе. Замените контакты, фото, цены и кейсы на свои актуальные данные.
+      </div>
     </div>
   </footer>
 </body>
 </html>
+      
+        
